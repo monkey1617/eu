@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missão com Nomes Aleatórios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 5px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Missão Especial</h1>
+  <p>A missão deve ser cumprida por <span id="nome-alvo">[Nome Aleatório]</span>.</p>
+
+  <button id="trocar-nome">Trocar Nome Aleatório</button>
+
+  <h2>Lista de Nomes Disponíveis:</h2>
+  <ul id="lista-nomes">
+    <!-- A lista de nomes aleatórios será inserida aqui -->
+  </ul>
+
+  <!-- JavaScript -->
+  <script>
+    // Função que retorna um nome aleatório da lista
+    function aleatorio() {
+      const nomes = ["João", "Maria", "Lucas", "Ana", "Carlos", "Sofia", "José", "Laura", "Pedro", "Julia"];
+      const indiceAleatorio = Math.floor(Math.random() * nomes.length);
+      return nomes[indiceAleatorio];
+    }
+
+    // Função que atualiza o nome na missão
+    function atualizarNome() {
+      document.getElementById('nome-alvo').textContent = aleatorio();
+    }
+
+    // Atualiza o nome ao carregar a página pela primeira vez
+    atualizarNome();
+
+    // Adiciona um evento ao botão para trocar o nome ao ser clicado
+    document.getElementById('trocar-nome').addEventListener('click', atualizarNome);
+
+    // Gera a lista de nomes e exibe na página
+    const nomesLista = ["João", "Maria", "Lucas", "Ana", "Carlos", "Sofia", "José", "Laura", "Pedro", "Julia"];
+    const listaElement = document.getElementById('lista-nomes');
+
+    nomesLista.forEach(nome => {
+      const li = document.createElement('li');
+      li.textContent = nome;
+      listaElement.appendChild(li);
+    });
+  </script>
+</body>
+</html>
